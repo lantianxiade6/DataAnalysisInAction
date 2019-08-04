@@ -40,3 +40,6 @@ TF-IDF = TF * IDF
   - `nltk`
 - 中文分类
   - `jieba`
+  
+## 直接看module5.py即可
+ 
