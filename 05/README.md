@@ -7,7 +7,7 @@
 
 [导入导出](./importOrExport.py)
 
-[其他内容]('./findEmpty.py')
+[其他内容](./findEmpty.py)
 
 ## 常用统计函数
 
@@ -27,8 +27,8 @@
 
 ##　数据表合并
 
-[合并]('./combination.py')
+[合并](./combination.py)
 
 ## SQL操作
 
-[合并]('./pandasSql.py')
+[合并](./pandasSql.py)
