@@ -16,11 +16,11 @@ angles=np.linspace(0, 2*np.pi, len(labels), endpoint=False)
 stats=np.concatenate((stats,[stats[0]]))
 angles=np.concatenate((angles,[angles[0]]))
 # 用 Matplotlib 画蜘蛛图
-fig = plt.figure()
-ax = fig.add_subplot(111, polar=True)
-ax.plot(angles, stats, 'o-', linewidth=2)
-ax.fill(angles, stats, alpha=0.25)
+fig = plt.figure()#空白画板
+ax = fig.add_subplot(111, polar=True)#画板划分成 1 行 1 列
+ax.plot(angles, stats, 'o-', linewidth=2)#连线
+ax.fill(angles, stats, alpha=0.25)#上色
 # 设置中文字体
-# font = FontProperties(fname=r"C:\Windows\Fonts\simhei.ttf", size=14)
-# ax.set_thetagrids(angles * 180/np.pi, labels, FontProperties=font)
+font = FontProperties(fname=r"C:\Windows\Fonts\simhei.ttf", size=14)
+ax.set_thetagrids(angles * 180/np.pi, labels, FontProperties=font)
 plt.show()

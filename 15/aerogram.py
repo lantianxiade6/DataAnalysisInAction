@@ -11,4 +11,5 @@ import seaborn as sns
 flights = sns.load_dataset('flights')
 data = flights.pivot('year', 'month', 'passengers')
 sns.heatmap(data)
-sns.show()
+# sns.show()
+plt.show()#展示热图
