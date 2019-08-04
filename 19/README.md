@@ -28,3 +28,4 @@ clf = DecisionTreeClassifier(criterion='entropy')
 - [模型4代码](module4.py)
 - [模型5代码](module5.py)
 - [模型6代码](module6.py)
+-直接看modele6.py即可
