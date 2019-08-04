@@ -2,8 +2,8 @@
 import pandas as pd
 
 # 数据加载
-train_data = pd.read_csv('./Titanic_Data/train.csv')
-test_data = pd.read_csv('./Titanic_Data/test.csv')
+train_data = pd.read_csv('./19/Titanic_Data/train.csv')#若报错，先检查路径，再将csv编码改为‘UTF-8’
+test_data = pd.read_csv('./19/Titanic_Data/test.csv')
 # 数据探索
 print(train_data.info())
 '''output
@@ -28,7 +28,7 @@ None
 
 '''
 print('-' * 30)
-print(train_data.describe())
+print(train_data.describe())#默认只看数值型数据
 '''output
        PassengerId    Survived      Pclass         Age       SibSp       Parch        Fare
 count   891.000000  891.000000  891.000000  714.000000  891.000000  891.000000  891.000000
@@ -42,7 +42,7 @@ max     891.000000    1.000000    3.000000   80.000000    8.000000    6.000000  
 
 '''
 print('-' * 30)
-print(train_data.describe(include=['O']))
+print(train_data.describe(include=['O']))#只看Strings数据
 '''output
                           Name   Sex Ticket    Cabin Embarked
 count                      891   891    891      204      889

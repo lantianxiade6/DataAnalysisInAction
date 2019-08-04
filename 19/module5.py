@@ -4,8 +4,8 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.tree import DecisionTreeClassifier
 
 # 数据加载
-train_data = pd.read_csv('./Titanic_Data/train.csv')
-test_data = pd.read_csv('./Titanic_Data/test.csv')
+train_data = pd.read_csv('./19/Titanic_Data/train.csv')
+test_data = pd.read_csv('./19/Titanic_Data/test.csv')
 # 数据探索
 print(train_data.info())
 # 使用平均年龄来填充年龄中的 nan 值

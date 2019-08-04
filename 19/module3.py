@@ -3,8 +3,8 @@ import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
 
 # 数据加载
-train_data = pd.read_csv('./Titanic_Data/train.csv')
-test_data = pd.read_csv('./Titanic_Data/test.csv')
+train_data = pd.read_csv('./19/Titanic_Data/train.csv')
+test_data = pd.read_csv('./19/Titanic_Data/test.csv')
 # 数据探索
 print(train_data.info())
 # 使用平均年龄来填充年龄中的 nan 值
@@ -29,13 +29,13 @@ train_data['Embarked'].fillna('S', inplace=True)
 test_data['Embarked'].fillna('S', inplace=True)
 
 # 特征选择
-features = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']
+features = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']#Cabin有大量缺失就不要了
 train_features = train_data[features]
 train_labels = train_data['Survived']
 test_features = test_data[features]
 
 dvec = DictVectorizer(sparse=False)
-train_features = dvec.fit_transform(train_features.to_dict(orient='record'))
+train_features = dvec.fit_transform(train_features.to_dict(orient='record'))#会将非数值题变换一下
 print(dvec.feature_names_)
 
 '''output

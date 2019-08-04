@@ -6,12 +6,13 @@ import numpy as np
 from sklearn.model_selection import cross_val_score
 
 # 数据加载
-train_data = pd.read_csv('./Titanic_Data/train.csv')
-test_data = pd.read_csv('./Titanic_Data/test.csv')
+train_data = pd.read_csv('./19/Titanic_Data/train.csv')#若报错，先检查路径，再将csv编码改为‘UTF-8’
+test_data = pd.read_csv('./19/Titanic_Data/test.csv')
 # 数据探索
 print(train_data.info())
+print(test_data.info())
 # 使用平均年龄来填充年龄中的 nan 值
-train_data['Age'].fillna(train_data['Age'].mean(), inplace=True)
+train_data['Age'].fillna(train_data['Age'].mean(), inplace=True)#inplace=True就是会将na替换
 test_data['Age'].fillna(test_data['Age'].mean(), inplace=True)
 # 使用票价的均值填充票价中的 nan 值
 train_data['Fare'].fillna(train_data['Fare'].mean(), inplace=True)
@@ -32,13 +33,14 @@ train_data['Embarked'].fillna('S', inplace=True)
 test_data['Embarked'].fillna('S', inplace=True)
 
 # 特征选择
-features = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']
+features = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']#Cabin有大量缺失，就不要了
 train_features = train_data[features]
 train_labels = train_data['Survived']
 test_features = test_data[features]
+#test_labels = test_data['Survived']#test_data里面没有它
 
 dvec = DictVectorizer(sparse=False)
-train_features = dvec.fit_transform(train_features.to_dict(orient='record'))
+train_features = dvec.fit_transform(train_features.to_dict(orient='record'))#会将字符型题目变换一下
 print(dvec.feature_names_)
 
 '''output
@@ -46,14 +48,15 @@ print(dvec.feature_names_)
 '''
 
 # 构造 ID3 决策树
-clf = DecisionTreeClassifier(criterion='entropy')
+clf = DecisionTreeClassifier(criterion='entropy')#决策树分类器，分类标准是信息熵
 # 决策树训练
-clf.fit(train_features, train_labels)
-test_features = dvec.transform(test_features.to_dict(orient='record'))
+clf.fit(train_features, train_labels)#放入训练集的特征和分类标识进行训练
+test_features = dvec.transform(test_features.to_dict(orient='record'))#会将字符型题目变换一下
 # 决策树预测
 pred_labels = clf.predict(test_features)
 
 # 得到决策树准确率
+#本来要用test_features, test_labels的(准确率也没这么高)，但test_data里面没有它
 acc_decision_tree = round(clf.score(train_features, train_labels), 6)
 print(u'score 准确率为 %.4lf' % acc_decision_tree)
 '''output
