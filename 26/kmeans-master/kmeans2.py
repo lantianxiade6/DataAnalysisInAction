@@ -33,12 +33,12 @@ img, width, height = load_data('./26/kmeans-master/weixin.jpg')
 kmeans =KMeans(n_clusters=16)
 kmeans.fit(img)
 label = kmeans.predict(img)
-print(label)
+print(label)#结果为类别0-15
 # 将图像聚类结果，转化成图像尺寸的矩阵
 label = label.reshape([width, height])
 print(label)
 # 将聚类标识矩阵转化为不同颜色的矩阵
-label_color = (color.label2rgb(label)*255).astype(np.uint8)
-label_color = label_color.transpose(1,0,2)
+label_color = (color.label2rgb(label)*255).astype(np.uint8)#转为rgb
+label_color = label_color.transpose(1,0,2)#各轴数据互换
 images = image.fromarray(label_color)
 images.save('./26/kmeans-master/weixin_mark_color.jpg')
