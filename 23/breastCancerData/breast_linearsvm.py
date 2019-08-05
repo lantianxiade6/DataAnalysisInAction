@@ -11,7 +11,7 @@ from sklearn import metrics
 from sklearn.preprocessing import StandardScaler
 
 # 加载数据集，你需要把数据放到目录中
-data = pd.read_csv("./data.csv")
+data = pd.read_csv("./23/breastCancerData/data.csv")
 
 # 数据探索
 # 因为数据集中列比较多，我们需要把dataframe中的列全部显示出来
@@ -21,9 +21,9 @@ print(data.head(5))
 print(data.describe())
 
 # 将特征字段分成3组
-features_mean= list(data.columns[2:12])
-features_se= list(data.columns[12:22])
-features_worst=list(data.columns[22:32])
+features_mean= list(data.columns[2:12])#radius_mean-fractal_dimension_mean(不算12的)#热图用
+features_se= list(data.columns[12:22])#radius_se-fractal_dimension_se
+features_worst=list(data.columns[22:32])#radius_worst-fractal_dimension_worst
 
 # 数据清洗
 # ID列没有用，删除该列
@@ -44,7 +44,7 @@ plt.show()
 
 # 特征选择
 #features_remain = ['radius_mean','texture_mean', 'smoothness_mean','compactness_mean','symmetry_mean', 'fractal_dimension_mean'] 
-features_remain = data.columns[1:31]
+features_remain = data.columns[1:31]#全部特征保留
 print(features_remain)
 print('-'*100)
 # 抽取30%的数据作为测试集，其余作为训练集
@@ -61,9 +61,9 @@ train_X = ss.fit_transform(train_X)
 test_X = ss.transform(test_X)
 
 # 创建SVM分类器
-model = svm.LinearSVC()
+model = svm.LinearSVC()#linearsvm
 # 用训练集做训练
 model.fit(train_X,train_y)
 # 用测试集做预测
 prediction=model.predict(test_X)
-print('准确率: ', metrics.accuracy_score(prediction,test_y))
+print('准确率: ', metrics.accuracy_score(prediction,test_y))#准确率:  0.9883040935672515

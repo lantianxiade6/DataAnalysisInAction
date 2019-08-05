@@ -10,7 +10,7 @@ from sklearn import metrics
 from sklearn.preprocessing import StandardScaler
 
 # 加载数据集，你需要把数据放到目录中
-data = pd.read_csv("./data.csv")
+data = pd.read_csv("./23/breastCancerData/data.csv")
 
 # 数据探索
 # 因为数据集中列比较多，我们需要把dataframe中的列全部显示出来
@@ -42,7 +42,7 @@ plt.show()
 
 
 # 特征选择
-features_remain = ['radius_mean','texture_mean', 'smoothness_mean','compactness_mean','symmetry_mean', 'fractal_dimension_mean'] 
+features_remain = ['radius_mean','texture_mean', 'smoothness_mean','compactness_mean','symmetry_mean', 'fractal_dimension_mean'] #只选择mean的特征
 
 # 抽取30%的数据作为测试集，其余作为训练集
 train, test = train_test_split(data, test_size = 0.3)# in this our main data is splitted into train and test
@@ -58,9 +58,9 @@ train_X = ss.fit_transform(train_X)
 test_X = ss.transform(test_X)
 
 # 创建SVM分类器
-model = svm.SVC()
+model = svm.SVC()#SVM
 # 用训练集做训练
 model.fit(train_X,train_y)
 # 用测试集做预测
 prediction=model.predict(test_X)
-print('准确率: ', metrics.accuracy_score(prediction,test_y))
+print('准确率: ', metrics.accuracy_score(prediction,test_y))#准确率:  0.9181286549707602
