@@ -1,6 +1,7 @@
 # encoding:utf-8
 import numpy as np
 
+#指定结构数组的类型
 persontype = np.dtype({
   'names': ['name', 'age', 'chinese', 'math', 'english'],
   'formats': ['S32', 'i', 'i', 'i', 'f']
@@ -16,21 +17,19 @@ peoples = np.array(
   dtype=persontype
 )
 
-ages = peoples[:]['age']
+ages = peoples[:]['age']#年龄
 chineses = peoples[:]['chinese']
 math = peoples[:]['math']
 english = peoples[:]['english']
 
-print np.mean(ages)
-print np.mean(chineses)
-print np.mean(math)
-print np.mean(english)
+print(np.mean(ages))#平均年龄
+print(np.mean(chineses))
+print(np.mean(math))
+print(np.mean(english))
 
 '''output:
 28.25
 77.5
 93.25
 93.75
-
-
 '''
