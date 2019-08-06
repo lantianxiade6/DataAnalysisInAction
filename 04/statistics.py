@@ -109,10 +109,20 @@ person=np.array([
         [80,90,90]
 ])
 print(person)
-print(np.mean(person,axis=1))
-print(np.amin(person,axis=1))
-print(np.amax(person,axis=1))
-print(np.var(person,axis=1))
-print(np.std(person,axis=1))
-print(np.sum(person,axis=1))
+
+resulttype=np.dtype({
+    'names':['张飞','关羽','赵云','黄忠','典韦'],
+    'formats':['f','f','f','f','f']
+})
+result=np.array([
+tuple(np.mean(person,axis=1)),
+tuple(np.amin(person,axis=1)),
+tuple(np.amax(person,axis=1)),
+tuple(np.var(person,axis=1)),
+tuple(np.std(person,axis=1)),
+tuple(np.sum(person,axis=1))
+],
+dtype=resulttype
+)
+print(result)
 #未解决
