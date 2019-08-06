@@ -98,31 +98,38 @@ import numpy as np
 # print(np.sort(d, axis=0))#按轴0排序
 # print(np.sort(d, axis=1))#按轴1排序
 
-#作业
-#每个人在三科中的平均成绩，最小成绩，最大成绩，方差，标准差。总成绩排名。
-
+##作业
+##在三科中的每个人的平均成绩，最小成绩，最大成绩，方差，标准差。总成绩排名。
+#建立数组，表头为'姓名','语文','英语','数学'
+persontype=np.dtype({
+        'names':['姓名','语文','英语','数学'],
+        'formats':['U32','f','f','f']
+        })
 person=np.array([
-        [66,65,30],
-        [95,85,98],
-        [93,92,96],
-        [90,88,77],
-        [80,90,90]
-])
-print(person)
+    ('张飞',66,65,30),
+    ('关羽',95,85,98),
+    ('赵云',93,92,96),
+    ('黄忠',90,88,77),
+    ('典韦',80,90,90)
+]
+,dtype=persontype)
+#print(person)
 
-resulttype=np.dtype({
-    'names':['张飞','关羽','赵云','黄忠','典韦'],
-    'formats':['f','f','f','f','f']
-})
-result=np.array([
-tuple(np.mean(person,axis=1)),
-tuple(np.amin(person,axis=1)),
-tuple(np.amax(person,axis=1)),
-tuple(np.var(person,axis=1)),
-tuple(np.std(person,axis=1)),
-tuple(np.sum(person,axis=1))
-],
-dtype=resulttype
-)
-print(result)
-#未解决
+#计算每个科目的每个人的平均成绩，最小成绩，最大成绩，方差，标准差
+for subject in ['语文','英语','数学']:#遍历每个科目
+    dat=person[:][subject]#取出对应科目的数据，用于后面计算
+    print('科目:{}: 平均成绩:{:.2f}; 最小成绩:{:.2f}; 最大成绩:{:.2f}; 方差:{:.2f}; 标准差:{:.2f}'.format(subject,np.mean(dat),np.min(dat),np.max(dat),np.var(dat),np.std(dat)))
+
+sum3=[]#计算每个人的三科总分
+for p in person:
+    sum3.append((p['姓名'],np.sum(list(p[['语文','英语','数学']]))))
+
+ranking=np.array(sum3,dtype=[('姓名','U32'),('总成绩','f')])
+#print(ranking)
+result=np.sort(ranking,order='总成绩')#按总成绩排序
+#print(result)
+print('排名    姓名    总分')
+i=1
+for ele in result[::-1]:
+    print('排名',i,ele)
+    i+=1
