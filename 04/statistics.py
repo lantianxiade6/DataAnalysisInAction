@@ -130,6 +130,6 @@ result=np.sort(ranking,order='总成绩')#按总成绩排序
 #print(result)
 print('排名    姓名    总分')
 i=1
-for ele in result[::-1]:
+for ele in result[::-1]:#倒数
     print('排名',i,ele)
     i+=1
