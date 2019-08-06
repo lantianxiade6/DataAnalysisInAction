@@ -99,22 +99,20 @@ import numpy as np
 # print(np.sort(d, axis=1))#按轴1排序
 
 #作业
-persontype=np.dtype({
-    'names':['name','Chinese','English','Math'],
-    'formats':['S32','i','i','i']
-})
+#每个人在三科中的平均成绩，最小成绩，最大成绩，方差，标准差。总成绩排名。
 
-person=np.array(
-    [
-        ('张飞',66,65,30),
-        ('关羽',95,85,98),
-        ('赵云',93,92,96),
-        ('黄忠',90,88,77),
-        ('典韦',80,90,90)
-    ],
-    dtype=persontype
-)
-
+person=np.array([
+        [66,65,30],
+        [95,85,98],
+        [93,92,96],
+        [90,88,77],
+        [80,90,90]
+])
 print(person)
-
+print(np.mean(person,axis=1))
+print(np.amin(person,axis=1))
+print(np.amax(person,axis=1))
+print(np.var(person,axis=1))
+print(np.std(person,axis=1))
+print(np.sum(person,axis=1))
 #未解决
