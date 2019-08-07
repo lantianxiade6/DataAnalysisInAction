@@ -7,6 +7,8 @@
 
 [导入导出](./importOrExport.py)
 
+[数据清洗](./clean.py)  
+
 [其他内容](./findEmpty.py)
 
 ## 常用统计函数
@@ -31,4 +33,6 @@
 
 ## SQL操作
 
-[合并](./pandasSql.py)
+[合并](./pandasSql.py)  
+作业也在里面  
+

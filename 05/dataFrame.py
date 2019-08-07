@@ -7,9 +7,9 @@ data = {
   'Math': [30, 98, 96, 77, 90],
 }
 
-data_frame1  = DataFrame(data)
+data_frame1  = DataFrame(data)#用字典创建dataframe，key为列索引，value为列数据
 
-print data_frame1
+print(data_frame1)
 
 '''
    Chinese  English  Math
@@ -20,9 +20,9 @@ print data_frame1
 4       80       90    90
 '''
 
-data_frame2 = DataFrame(data,index=['guan','zhang','zhao','ma','huang'])
+data_frame2 = DataFrame(data,index=['guan','zhang','zhao','ma','huang'])#指定行索引
 
-print data_frame2
+print(data_frame2)
 
 '''
        Chinese  English  Math

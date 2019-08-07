@@ -31,4 +31,5 @@ axis =0 || acxis =1
 
 ![image](./axis0-3.png)
 
-[statistics](./statistics.py)
+[statistics](./statistics.py)  
+作业也在里面
