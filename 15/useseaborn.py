@@ -17,8 +17,6 @@ y = np.random.rand(N)
 ## use seaborn
 import seaborn as sns
 sns.set(style="darkgrid")
-
 df = pd.DataFrame({'x': x, 'y': y})
-
-sns.jointplot(x='x', y='y', data=df, kind='scatter')#比正常散点图多了频数直方图
+sns.jointplot(x='x', y='y', data=df, kind='scatter')#比正常散点图多了x,y的频数直方图
 plt.show()
