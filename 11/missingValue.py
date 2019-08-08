@@ -12,9 +12,9 @@ data = {
 
 data_frame2 = DataFrame(data, index=['guan', 'zhang', 'zhao', 'ma', 'huang'])
 
-data_frame2['Chinese'].fillna(data_frame2['Chinese'].mean(),inplace=True)
+data_frame2['Chinese'].fillna(data_frame2['Chinese'].mean(),inplace=True)#Chinese列用本列均值替换na
 
-print data_frame2
+print(data_frame2)
 
 '''
        Chinese  English  Math       name

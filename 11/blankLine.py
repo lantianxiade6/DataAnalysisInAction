@@ -4,17 +4,18 @@ import pandas as pd
 from pandas import Series, DataFrame
 
 data = {
-  'Chinese': [66, 95, 93, 90, None],
-  'English': [65, 85, 92, 88, 90],
-  'Math': [30, 98, 96, 77, 90],
-  'name':['xiaoguan','xiaozhang','xiaozhao','xiaoma','xiaohuang']
+  'Chinese': [66, 95, 93, 90, None, None],
+  'English': [65, 85, 92, 88, 90, None],
+  'Math': [30, 98, 96, 77, 90, None],
+  'name':['xiaoguan','xiaozhang','xiaozhao','xiaoma','xiaohuang', None]
 }
 
-data_frame2 = DataFrame(data, index=['guan', 'zhang', 'zhao', 'ma', 'huang'])
+data_frame2 = DataFrame(data, index=['guan', 'zhang', 'zhao', 'ma', 'huang','dummy'])
+print(data_frame2)
 
-data_frame2.dropna(how='all',inplace=True)
+data_frame2.dropna(how='all',inplace=True)#删除空行
 
-print data_frame2
+print(data_frame2)
 
 '''output
        Chinese  English  Math       name
