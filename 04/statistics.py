@@ -95,41 +95,50 @@ import numpy as np
 # )
 # print(np.sort(d))#默认按最后一个轴排序
 # print(np.sort(d, axis=None))#扁平化成1维的向量排序
-# print(np.sort(d, axis=0))#按轴0排序
-# print(np.sort(d, axis=1))#按轴1排序
+# print(np.sort(d, axis=0))#按轴0排序(跨行，即按列)
+# print(np.sort(d, axis=1))#按轴1排序(跨列，即按行)
 
-##作业
+##作业04
 ##在三科中的每个人的平均成绩，最小成绩，最大成绩，方差，标准差。总成绩排名。
 #建立数组，表头为'姓名','语文','英语','数学'
-persontype=np.dtype({
-        'names':['姓名','语文','英语','数学'],
-        'formats':['U32','f','f','f']
-        })
-person=np.array([
-    ('张飞',66,65,30),
-    ('关羽',95,85,98),
-    ('赵云',93,92,96),
-    ('黄忠',90,88,77),
-    ('典韦',80,90,90)
-]
-,dtype=persontype)
-#print(person)
+# persontype=np.dtype({
+#         'names':['姓名','语文','英语','数学'],
+#         'formats':['U32','f','f','f']
+#         })
+# person=np.array([
+#     ('张飞',66,65,30),
+#     ('关羽',95,85,98),
+#     ('赵云',93,92,96),
+#     ('黄忠',90,88,77),
+#     ('典韦',80,90,90)
+# ]
+# ,dtype=persontype)
+# #print(person)
 
-#计算每个科目的每个人的平均成绩，最小成绩，最大成绩，方差，标准差
-for subject in ['语文','英语','数学']:#遍历每个科目
-    dat=person[:][subject]#取出对应科目的数据，用于后面计算
-    print('科目:{}: 平均成绩:{:.2f}; 最小成绩:{:.2f}; 最大成绩:{:.2f}; 方差:{:.2f}; 标准差:{:.2f}'.format(subject,np.mean(dat),np.min(dat),np.max(dat),np.var(dat),np.std(dat)))
+# #计算每个科目的每个人的平均成绩，最小成绩，最大成绩，方差，标准差
+# for subject in ['语文','英语','数学']:#遍历每个科目
+#     dat=person[:][subject]#取出对应科目的数据，用于后面计算
+#     print('科目:{}: 平均成绩:{:.2f}; 最小成绩:{:.2f}; 最大成绩:{:.2f}; 方差:{:.2f}; 标准差:{:.2f}'.format(subject,np.mean(dat),np.min(dat),np.max(dat),np.var(dat),np.std(dat)))
 
-sum3=[]#计算每个人的三科总分
-for p in person:
-    sum3.append((p['姓名'],np.sum(list(p[['语文','英语','数学']]))))
+# sum3=[]#计算每个人的三科总分
+# for p in person:
+#     sum3.append((p['姓名'],np.sum(list(p[['语文','英语','数学']]))))
 
-ranking=np.array(sum3,dtype=[('姓名','U32'),('总成绩','f')])
-#print(ranking)
-result=np.sort(ranking,order='总成绩')#按总成绩排序
-#print(result)
-print('排名    姓名    总分')
-i=1
-for ele in result[::-1]:#倒数
-    print('排名',i,ele)
-    i+=1
+# ranking=np.array(sum3,dtype=[('姓名','U32'),('总成绩','f')])
+# #print(ranking)
+# result=np.sort(ranking,order='总成绩')#按总成绩排序
+# #print(result)
+# print('排名    姓名    总分')
+# i=1
+# for ele in result[::-1]:#倒数
+#     print('排名',i,ele)
+#     i+=1
+
+
+##作业16
+a=np.array([
+    [4,3,2],
+    [2,4,1]
+])
+
+print(np.sort(a,axis=0))#按列排序
