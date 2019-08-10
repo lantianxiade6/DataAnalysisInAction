@@ -29,7 +29,9 @@
 # dot_data=tree.export_graphviz(clf,out_file=None)#输出DOT格式的决策树
 # graph=graphviz.Source(dot_data)
 # #graph.view()
-# #输出分类树图示，比如里面有个叶节点value=[34,0,0],应该就是判为第0类的意思了
+# #输出分类树图示，比如里面有个叶节点:X[3]<=0.75，它表示以属性x[3]<=0.75为条件划分，当true时就让左子树，false时进入右子树
+# #gini就是当前节点的gini系数。samples就是当前节点的样本数
+# #value=[34,0,0],是指在0/1/2这三类上的样本数，这里刚好全部在类别0上。
 # graph.render("分类树","./18/")#会在目录下生成一个pdf
 '''output
 CART 分类树准确率 0.9800

@@ -1,7 +1,7 @@
 ## 分类回归树(Classification And Regression Tree,简称CART)
 
 - ID3和C4.5可以生成二叉树或多叉树
-- CART算法只支持二叉树
+- CART算法只支持二叉树（应该是只每次都岔开两个分支）
   1. 可以作为分类树
   2. 可以作为回归树
 
