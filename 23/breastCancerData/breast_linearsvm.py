@@ -43,7 +43,7 @@ plt.show()
 
 
 # 特征选择
-#features_remain = ['radius_mean','texture_mean', 'smoothness_mean','compactness_mean','symmetry_mean', 'fractal_dimension_mean'] 
+# features_remain = ['radius_mean','texture_mean', 'smoothness_mean','compactness_mean','symmetry_mean', 'fractal_dimension_mean'] 
 features_remain = data.columns[1:31]#全部特征保留
 print(features_remain)
 print('-'*100)
@@ -56,9 +56,10 @@ test_X= test[features_remain]
 test_y =test['diagnosis']
 
 # 采用Z-Score规范化数据，保证每个特征维度的数据均值为0，方差为1
+# 让数据同在一个量级上，避免因为维度问题造成数据误差
 ss = StandardScaler()
-train_X = ss.fit_transform(train_X)
-test_X = ss.transform(test_X)
+train_X = ss.fit_transform(train_X)#训练+转换
+test_X = ss.transform(test_X)#仅转换
 
 # 创建SVM分类器
 model = svm.LinearSVC()#linearsvm
