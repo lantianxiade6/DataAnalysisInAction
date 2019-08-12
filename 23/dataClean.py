@@ -24,4 +24,12 @@ plt.show()
 #特征选择：用少量特征代表数据的特性，增强分类器的泛化能力，避免数据过拟合
 #feature_mean/se/worst是同一组内容的不同度量方式，只保留一个即可。
 #相似性很高的那些字段，取一个有代表性的即可
-feature_mean=['radius_mean','texture_mean','smoonthness_mean','compactness_mean','sym']
+features_remain=['radius_mean','texture_mean','smoothness_mean','compactness_mean','symmetry_mean','fractal_dimension_mean']
+corr2=data[features_remain].corr()
+plt.figure(figsize=(14,14))
+sns.heatmap(corr2,annot=True)#annot=True则会显示每个方格数据
+plt.show()#这次没有浅色的格子了
+
+
+
+
