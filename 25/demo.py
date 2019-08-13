@@ -20,7 +20,7 @@ print(digits.images[0])
  [ 0.  0.  6. 13. 10.  0.  0.  0.]]'''
 # 第一幅图像代表的数字含义，相当于y
 print(digits.target[0])#0
-# 将第一幅图像显示出来
+# 将第一幅图像显示出来(可视化)
 plt.gray()
 plt.imshow(digits.images[0])#见images[0].png
 plt.show()

@@ -22,3 +22,7 @@
 预览：
 
 ![](./kmeans-master/weixin_new.jpg)
+
+
+## K-means的缺陷
+聚类个数K值需要事先指定。需多设置几个k值，再选择聚类结果最好的那个值
