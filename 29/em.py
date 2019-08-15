@@ -10,14 +10,12 @@ from sklearn.mixture import GaussianMixture
 from sklearn.preprocessing import StandardScaler
 
 # 数据加载，避免中文乱码问题
-data_ori = pd.read_csv('./heros.csv', encoding='gb18030')
+data_ori = pd.read_csv('./29/heros.csv', encoding='gb18030')
+print(data_ori.columns)#所有表头
 features = [u'最大生命', u'生命成长', u'初始生命', u'最大法力', u'法力成长', u'初始法力', u'最高物攻', u'物攻成长', u'初始物攻', u'最大物防', u'物防成长', u'初始物防',
-            u'最大每 5 秒回血', u'每 5 秒回血成长', u'初始每 5 秒回血', u'最大每 5 秒回蓝', u'每 5 秒回蓝成长', u'初始每 5 秒回蓝', u'最大攻速', u'攻击范围']
-data = data_ori[features]
+            u'最大每5秒回血', u'每5秒回血成长', u'初始每5秒回血', u'最大每5秒回蓝', u'每5秒回蓝成长', u'初始每5秒回蓝', u'最大攻速', u'攻击范围']
+data = data_ori[features]#只提取部分字段
 
-'''error:
-KeyError: "['最大每 5 秒回蓝', '初始每 5 秒回血', '每 5 秒回血成长', '最大每 5 秒回血', '每 5 秒回蓝成长', '初始每 5 秒回蓝'] not in index"
-'''
 # 对英雄属性之间的关系进行可视化分析
 # 设置 plt 正确显示中文
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
@@ -26,12 +24,12 @@ plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 corr = data[features].corr()
 plt.figure(figsize=(14, 14))
 # annot=True 显示每个方格的数据
-sns.heatmap(corr, annot=True)
+sns.heatmap(corr, annot=True)#热图
 plt.show()
 
-# 相关性大的属性保留一个，因此可以对属性进行降维
-features_remain = [u'最大生命', u'初始生命', u'最大法力', u'最高物攻', u'初始物攻', u'最大物防', u'初始物防', u'最大每 5 秒回血', u'最大每 5 秒回蓝',
-                   u'初始每 5 秒回蓝', u'最大攻速', u'攻击范围']
+# 相关性大的属性保留一个，因此可以对属性进行降维，详见特征选择分析过程.PNG（'最大攻速', u'攻击范围'是字符串型）
+features_remain = [u'最大生命', u'初始生命', u'最大法力', u'最高物攻', u'初始物攻', u'最大物防', u'初始物防', u'最大每5秒回血', u'最大每5秒回蓝',
+                   u'最大攻速', u'攻击范围']
 data = data_ori[features_remain]
 data[u'最大攻速'] = data[u'最大攻速'].apply(lambda x: float(x.strip('%')) / 100)
 data[u'攻击范围'] = data[u'攻击范围'].map({'远程': 1, '近战': 0})
@@ -46,4 +44,4 @@ prediction = gmm.predict(data)
 print(prediction)
 # 将分组结果输出到 CSV 文件中
 data_ori.insert(0, '分组', prediction)
-data_ori.to_csv('./hero_out.csv', index=False, sep=',')
+data_ori.to_csv('./29/hero_out.csv', index=False, sep=',')
