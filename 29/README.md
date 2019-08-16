@@ -18,5 +18,13 @@ gmm=GaussianMixture(n_components=1,covariance_type='full',max_iter=100)
 
 [pipenv 环境](em.py)
 
-[官方源码](here_em.py)
+[官方源码-没有跑](here_em.py)
 
+## 评估聚类结果
+```
+from sklearn.metrics import calinski_harabaz_score
+print(calinski_harabaz_score(data,prediction))
+```
+- 指标分数越高，代表聚类效果越好，也就是相同类中的差异越小，不同类之间的差异性大。
+- 但聚类的结果含义，即具体每个类代表的含义，需要人工来分析。
+- 聚类算法也可以作为其他数据挖掘算法的预处理阶段，这样我们就可以将数据进行降维。
