@@ -2,6 +2,7 @@
 - 打开https://pypi.org/，搜索apriori，可以找到可以实现apriori的包，但不用下载，点进去可以看到具体pip怎么写
 - 然后直接pip install efficient-apriori即可
 - efficient-apriori 会把每一条数据中的项（item）放到一个集合（篮子）里来处理，不考虑项之间的先后顺序
+- 一般来说最小支持度的常见取值有0.5,0.1，0.05。最小置信度的常见取值有1.0,0.9，0.8。然后再观察关联结果调整最小支持度和最小置信度的取值。
 ```python
 itemsets, rules = apriori(data, min_support,  min_confidence)
 
