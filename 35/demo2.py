@@ -10,18 +10,24 @@ data=load_boston()
 train_x, test_x, train_y, test_y = train_test_split(data.data, data.target, test_size=0.25, random_state=33)
 # 使用 AdaBoost 回归模型
 regressor=AdaBoostRegressor()
-regressor.fit(train_x,train_y)
-pred_y = regressor.predict(test_x)
-mse = mean_squared_error(test_y, pred_y)
+regressor.fit(train_x,train_y)#训练
+pred_y = regressor.predict(test_x)#预测
+mse = mean_squared_error(test_y, pred_y)#均方误差
+print("AdaBoost均方误差 = ",round(mse,2))#保留2位小数
+'''
+AdaBoost均方误差 =  18.33
+'''
+
 # 使用决策树回归模型
 dec_regressor=DecisionTreeRegressor()
 dec_regressor.fit(train_x,train_y)
 pred_y = dec_regressor.predict(test_x)
 mse = mean_squared_error(test_y, pred_y)
-print(" 决策树均方误差 = ",round(mse,2))
+print("决策树均方误差 = ",round(mse,2))
 '''
- 决策树均方误差 =  28.19
+决策树均方误差 =  25.76
 '''
+
 # 使用 KNN 回归模型
 knn_regressor=KNeighborsRegressor()
 knn_regressor.fit(train_x,train_y)
@@ -30,5 +36,4 @@ mse = mean_squared_error(test_y, pred_y)
 print("KNN 均方误差 = ",round(mse,2))
 '''
 KNN 均方误差 =  27.87
-
 '''

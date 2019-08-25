@@ -23,27 +23,29 @@
       
 2. 节点的增删查
 
-添加
+添加节点
 
 ```python
 
 # 单点
 G.add_node('A')
 # 点集合
-G.add_nodes_from(['B','C','D',...
+G.add_nodes_from(['B','C','D'])
 
 ```
-删除
+删除节点
 ```python
+# 点
 G.remove_node(node)
+# 点集合
+G.remove_nodes_from(['A','B','C','D'])
 
 ```
 
-查询
+查询节点
 ```python
-# 所有
-G.remove_node(node)
-
+# 所有节点
+G.nodes(node)
 # 查询节点个数
 G.number_of_nodes()
 
@@ -53,16 +55,18 @@ G.number_of_nodes()
 
 ```python
 # 增加边 
-G.add_edge('A', 'B')
-G.add_edges_from()
-G.add_weighted_edges_from()
+G.add_edge('A', 'B')#添加从A到B的边
+G.add_edges_from()#添加边集合
+G.add_weighted_edges_from([(from1,to1,weitht1),(from2,to2,weitht2)])#添加带有权重的边集合
 
-# 删除
+# 删除边
 G.remove_edge()
+# 删除边集合
 G.remove_edges_from()
 
-# 查询
+# 查询边
 G.edges()
+# 边的个数
 G.number_of_edges()
 
 ```
@@ -71,6 +75,12 @@ G.number_of_edges()
 流程步骤图：
 
 ![](分析希拉里邮件过程.jpg)
+[Emails](./input/Emails.csv)
+Id,MetadataTo,MetadataFrom,(邮件ID，收信人，发件人)和其他公开邮件内容信息
+[Persons](./input/Persons.csv)
+Id,Name（名称）
+[Aliases](./input/Aliases.csv)
+Id,Alias,PersonId（别名和对应的名称id)
 
 官方源码
 
@@ -78,7 +88,7 @@ G.number_of_edges()
 
 修改后
 
-[修改后源码](./demo2.py)
+[修改后源码-没有跑](./demo2.py)
 
 
 ### 总结
