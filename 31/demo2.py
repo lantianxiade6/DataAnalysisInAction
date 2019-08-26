@@ -21,6 +21,8 @@ csv_write = csv.writer(out, dialect='excel')#将csv.writer方法包装为csv_wri
 #打开chrome-右上角更多工具-扩展程序-左上角扩展程序-打开Chrome网上应用店（需翻墙）-搜索“xpath helper"-添加至chrome
 #快捷键Ctrl+Shift+X，并将鼠标点击或悬在目标（如第一个电影名字）上，就会出现黑色框显示目标的xpath,如
 #/html/body/div[@id='wrapper']/div[@id='root']/div[@class='sc-gqjmRU koaMsN']/div[@class='_tl97eqioz']/div[@class='_4q0n0wup2']/div[1]/div[@class='sc-bZQynM lCDjx sc-bxivhb hRIaFd'][1]/div[@class='item-root']/div[@class='detail']/div[@class='title']/a[@class='title-text']
+#寻找XPath是一个找规律的过程，一般以//开头，
+#再找如class='item-root'的节点或id='root'等等
 #尝试去掉某些内容(特别是中间），会得到所有电影名字的xpath
 #导演演员表：/html/body/div[@id='wrapper']/div[@id='root']/div[@class='sc-gqjmRU koaMsN']/div[@class='_tl97eqioz']/div[@class='_4q0n0wup2']/div[1]/div[@class='sc-bZQynM lCDjx sc-bxivhb hRIaFd'][1]/div[@class='item-root']/div[@class='detail']/div[@class='meta abstract_2']
 

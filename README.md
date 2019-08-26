@@ -67,6 +67,7 @@ github 昵称： reverse()
     - [33丨 PageRank (下) 分析希拉里邮件中的人物关系](./33/README.md)
     - [34丨 AdaBoost (上) 如何使用AdaBoost提升分类器性能？](./34/README.md)
     - [35丨 AdaBoost (下) 如何使用AdaBoost对房价进行预测？](./35/README.md)
+    - [36 | 数据分析算法答疑](./无)
 - **场景实战**
     - [37丨 数据采集实战：如何自动化运营微博？](./37/README.md)
     - [38丨数据可视化实战：如何给毛不易的歌曲做词云展示？](./38/README.md)

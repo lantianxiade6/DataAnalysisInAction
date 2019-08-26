@@ -12,6 +12,9 @@ clf = DecisionTreeClassifier(criterion='entropy')
 criterion='entropy'即为ID3算法  
 criterion='gini'即为CART算法（默认参数）
 
+决策树分类器和决策树回归器都没有集成剪枝步骤，调整下面这俩就相当于剪枝了：
+max_depth树的最大深度
+max_leaf_nodes最大的叶子树
 ![参数列表](./WechatIMG16.jpeg)
 
 ## 分类器方法

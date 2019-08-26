@@ -6,6 +6,7 @@ import numpy as np
 from sklearn.model_selection import cross_val_score
 
 # 数据加载
+# 如果read_csv报错就加入参数encoding='gb18030'，或者如代码最开头那样写
 train_data = pd.read_csv('./19/Titanic_Data/train.csv')#训练集，包括特征信息和存活与否标签 #若报错，先检查路径，再将csv编码改为‘UTF-8’
 test_data = pd.read_csv('./19/Titanic_Data/test.csv')#测试集，只包含特征信息
 # 数据探索
