@@ -12,18 +12,15 @@ def weibo_login(username, password):
   time.sleep(1)#等待1秒
   # 填写登录信息：用户名、密码
   browser.find_element_by_id("loginName").send_keys(username)
-  #browser.find_element_by_id("loginPassword").send_keys(password)
-  browser.find_element_by_xpath('//*[@id="pl_login_form"]/div/div[3]/div[2]/div/input').send_keys(password)
+  browser.find_element_by_id("loginPassword").send_keys(password)
   time.sleep(1)
   # 点击登录按钮
-  #browser.find_element_by_id("loginAction").click()
-  browser.find_element_by_xpath('//*[@id="pl_login_form"]/div/div[3]/div[6]/a').click()
+  browser.find_element_by_id("loginAction").click()
   time.sleep(1)
 
-
 # 设置用户名、密码
-username = 'nicole0468@sina.cn'
-password = "3278156932"
+username = 'xxx@sina.cn'
+password = "xxx"
 weibo_login(username, password)#登录微博
 
 
