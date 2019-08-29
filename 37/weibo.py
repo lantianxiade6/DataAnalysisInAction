@@ -49,6 +49,7 @@ weibo_login(username, password)#登录微博
 #   browser.get(weibo_url)#打开网页
 #   browser.implicitly_wait(5)
 #   #对于并列的classname而言，如“class="m-box-center-a main-text m-text-cut focus"”，需要去掉空格，并且加点
+#   #可以自己在console里面用js找，如：window.document.getElementsByClassName('textarea')
 #   browser.find_element_by_css_selector('.m-box-center-a.main-text.m-text-cut.focus').click()#要先点击“发表评论”后面的元素才会渲染出来
 #   content_textarea = browser.find_element_by_css_selector(".textarea")#找到输入评论的框
 #   content_textarea.clear()#清空
