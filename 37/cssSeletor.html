@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css常见选择器示例</title>
+</head>
+<body>
+  <div id="box" class="parent bg-red">
+    <div class="child bg-red">
+      这里是子元素
+      <ul class="list bg-red">
+        <li>这里是后代元素</li>
+        <li class="item" data-title="title">这里是后代元素</li>
+        <li class="item" data-title="title2">这里是后代元素</li>
+        <li>这里是后代元素</li>
+      </ul>
+      <div>ll</div>
+    </div>
+    <p>yy</p>
+  </div>
+  <script>
+    //--------上面是dom结构，是由html标签组成的树
+    //---基础选择器
+    // id选择器
+    console.log(document.querySelectorAll('#box'));//querySelectorAll返回数组
+
+    document.querySelector('div');//querySelector返回第一个匹配到的元素
+
+    // 标签选择器
+    console.log(document.querySelectorAll('div'));
+
+    // 类选择器
+    console.log(document.querySelectorAll('.bg-red'));
+
+    // 属性选择器
+    console.log(document.querySelectorAll('[data-title]'));//指定属性名
+    console.log(document.querySelectorAll('[data-title=title2]'));//指定属性-值对
+
+    //---基础选择器的组合
+    // 子代选择器，用>
+    console.log(document.querySelectorAll('#box > div'));
+
+    // 后代选择器，用空格
+    console.log(document.querySelectorAll('#box div'));
+
+    // 交集，无间隔，如这样也行的：'.parent.bg-red#box[data-title]'
+    console.log(document.querySelectorAll('.parent.bg-red'));
+
+    // 并集，用逗号
+    console.log(document.querySelectorAll('.parent,.bg-red,[data-title]'));
+
+    // 选择第一个元素（li是标签）（先找到.list.bg-red，再找到子代里面的li，当前定位的元素的父元素的第一个li子元素）
+    console.log(document.querySelectorAll('.list.bg-red > li:first-child'));
+
+    // 选择最后一个元素
+    console.log(document.querySelectorAll('.list.bg-red > li:last-child'));
+    //从1开始数的第3个元素
+    console.log(document.querySelectorAll('.list.bg-red > li:nth-child(3)'));
+  </script>
+</body>
+</html>

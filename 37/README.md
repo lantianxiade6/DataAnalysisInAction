@@ -37,6 +37,7 @@ find_element_by_class_name()
 
 ```python
 find_element_by_tag_name()
+find_elements_by_class_name()//注：element就是找到第1个，elements就是找到全部
 
 ```
 5. 通过 `link` 完整文本定位
