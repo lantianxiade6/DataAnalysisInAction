@@ -8,7 +8,7 @@ from PIL import Image
 import numpy as np
 
 def remove_stop_words(f):
-     stop_words = ['学会', '就是', '什么']
+     stop_words = ['学会','就是','什么','如何','这些','一次','一共','哪些','这里']
      for stop_word in stop_words:
            f = f.replace(stop_word, '')
      return f
@@ -19,7 +19,7 @@ def create_word_cloud(f):
   f=remove_stop_words(f)#去掉停词，但有个问题是可能会截断某个词
   text = " ".join(jieba.cut(f, cut_all=False, HMM=True))#先切词，再以空格间隔拼接
   wc = WordCloud(#构建WordCloud类
-    font_path="./SimHei.ttf",
+    font_path="./38/SimHei.ttf",
     max_words=100,#词的最大长度是100个字
     width=2000,
     height=1200,
