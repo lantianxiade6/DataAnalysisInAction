@@ -30,6 +30,7 @@ brower.find_element_by_name('mouname')
 
 ```python
 find_element_by_class_name()
+find_elements_by_class_name()//注：element就是找到第1个，elements就是找到全部
 
 ```
 
@@ -37,7 +38,6 @@ find_element_by_class_name()
 
 ```python
 find_element_by_tag_name()
-find_elements_by_class_name()//注：element就是找到第1个，elements就是找到全部
 
 ```
 5. 通过 `link` 完整文本定位
@@ -55,15 +55,23 @@ find_element_by_partial_link_text()
 ```
 
 7. 通过 `xpath` 定位
-
+用ctrl+Shift+X找出来
 ```python
 find_element_by_xpath()
 ```
 8. 通过 `css` 定位
-
+```JavaScript
+//先在console上面用JS找出来
+window.document.getElementsByClassName('textarea')
+document.querySelectorAll('.textarea')
+```
 ```python
 find_element_by_css_selector()
 ```
+CSS知识：
+- https://blog.csdn.net/DYD850804/article/details/80997251
+- https://segmentfault.com/a/1190000007815822
+- [cssSelector知识](cssSeletor.html)
 
 #### 对元素进行操作
 

@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 import matplotlib
-
 matplotlib.use('Qt4Agg')
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
@@ -8,29 +7,34 @@ import jieba
 from PIL import Image
 import numpy as np
 
+def remove_stop_words(f):
+     stop_words = ['学会', '就是', '什么']
+     for stop_word in stop_words:
+           f = f.replace(stop_word, '')
+     return f
 
 # 生成词云
 def create_word_cloud(f):
   print('根据词频计算词云')
-  text = " ".join(jieba.cut(f, cut_all=False, HMM=True))
-  wc = WordCloud(
+  f=remove_stop_words(f)#去掉停词，但有个问题是可能会截断某个词
+  text = " ".join(jieba.cut(f, cut_all=False, HMM=True))#先切词，再以空格间隔拼接
+  wc = WordCloud(#构建WordCloud类
     font_path="./SimHei.ttf",
-    max_words=100,
+    max_words=100,#词的最大长度是100个字
     width=2000,
     height=1200,
   )
-  wordcloud = wc.generate(text)
+  wordcloud = wc.generate(text)#生成词云
   # 写词云图片
-  wordcloud.to_file("./wordcloud.jpg")
+  wordcloud.to_file("./38/wordcloud0.jpg")
   # 显示词云文件
   plt.imshow(wordcloud)
   plt.axis("off")
   plt.show()
 
 
-
-
-if __name__ == '__main__':
+#模块化，如果直接跑本程序，就跑create_word_cloud(f)，否则不跑
+if __name__ == '__main__':#即直接跑本程序
 
   f = '''数据分析全景图及修炼指南\
   学习数据挖掘的最佳学习路径是什么？\
