@@ -68,8 +68,8 @@ def get_songs(artist_id):
   res = requests.request('GET', page_url, headers=headers)#请求网页，得到html
   # 用 XPath 解析 前 50 首热门歌曲
   html = etree.HTML(res.text)#用xpath解析
-  hrefs = html.xpath("//*[@id='hotsong-list']//a/@href")#？
-  names = html.xpath("//*[@id='hotsong-list']//a/text()")#？
+  hrefs = html.xpath("//*[@id='hotsong-list']//a/@href")#id='hotsong-list下的所有链接(a)的url
+  names = html.xpath("//*[@id='hotsong-list']//a/text()")#id='hotsong-list下的所有链接(a)的文本
   # 设置热门歌曲的 ID，歌曲名称
   song_ids = []
   song_names = []
@@ -99,7 +99,7 @@ all_word = ''
 # 获取每首歌歌词
 for (song_id, song_name) in zip(song_ids, song_names):
   # 歌词 API URL
-  lyric_url = 'http://music.163.com/api/song/lyric?os=pc&id=' + song_id + '&lv=-1&kv=-1&tv=-1'#？不知道在网页上怎么找到的，但的确是对的
+  lyric_url = 'http://music.163.com/api/song/lyric?os=pc&id=' + song_id + '&lv=-1&kv=-1&tv=-1'#？不知道在网页上怎么找到的（貌似是直接搜api得到的），但的确是对的
   lyric = get_song_lyric(headers, lyric_url)#函数调用get_song_lyric，获取歌词
   all_word = all_word + ' ' + lyric#全部歌词拼接在一起
   print(song_name)
