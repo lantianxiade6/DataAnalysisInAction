@@ -63,7 +63,8 @@ def plot_precision_recall(precision, recall):
 
 
 # 数据加载
-data = pd.read_csv('./40/creditcard.csv')
+#data = pd.read_csv('./40/creditcard.csv')#由于GitHub限制文件不得大于100M,所以这里直接读取本地csv，GitHub上只保留rar压缩版
+data = pd.read_csv(r'D:\Lisa\学习2\python\creditcard.csv')
 
 # 数据探索
 print(data.describe())
