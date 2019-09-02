@@ -26,14 +26,15 @@
  [代码实例](demo2.py)
  
  采用 Pipeline 管道机制，先用StandardScaler方法对 IRIS 数据规范化，然后再用随机森林对数据集做一下分类
-- (名称，步骤)
+- (名称，步骤)  
+
  [代码](demo3.py)
 
 ## 对信用卡违约率进行分析
 
 数据集字段
 
-![](https://static001.geekbang.org/resource/image/17/88/1730fb3a809c99950739e7f50e1a6988.jpg)
+![](字段.jpg)
 
 构建分类器
 
@@ -53,5 +54,5 @@
  [作业](practice.py)
  ## 总结
  
- ![](https://static001.geekbang.org/resource/image/14/16/14f9cddc17d6cceb0b8cbc4381c65216.png)
+ ![](总结.png)
  
