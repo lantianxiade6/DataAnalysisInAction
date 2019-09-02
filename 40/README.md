@@ -17,17 +17,19 @@
 
 逻辑回归
 
-`logistic` 回归,它实际上是分类方法，为了解决二分类问题。也可解决多分类问题
+`logistic` 回归，它实际上是分类方法，为了解决二分类问题。也可解决多分类问题  
+在逻辑回归中使用了Logistic函数，也称为Sigmoid函数  
 
 2. 函数公式
 
-![](https://static001.geekbang.org/resource/image/3e/18/3e7c7cb4d26d1a71f958610f26d20818.png)
+$$g(z)=\frac{1}{1+e^{-z}}$$
+
 
 函数图形
 
-![](https://static001.geekbang.org/resource/image/b7/3b/b7a5d39d91fda02b21669137a489743b.png)
+![](sigmoid.png)
 
-- `z` 越大的时候，`g(z)` 越大，当 `z` 趋近于无穷大的时候，`g(z)` 趋近于 `1`
+- g(z)的结果在0-1之间。`z` 越大的时候，`g(z)` 越大，当 `z` 趋近于无穷大的时候，`g(z)` 趋近于 `1`
 
 - `z` 趋近于无穷小的时候，`g(z)` 趋近于 0
 
@@ -36,41 +38,49 @@
 - `0` 即为不发生，`1` 即为发生
 
 ## 代码实现 `sklearn`
-
-
+```
 LogisticRegression()
-
+```
 参数：
 
-- `penalty`：惩罚项，取值为 l1 或 l2，默认为 l2...
-- `solver`：代表的是逻辑回归损失函数的优化方法
-- `max_iter`：算法收敛的最大迭代次数
+- `penalty`：惩罚项，取值为 l1 或 l2，默认为 l2。当模型参数满足高斯分布的时候，使用l2，当模型参数满足拉普拉斯分布的时候，使用l1。
+- `solver`：代表的是逻辑回归损失函数的优化方法。有5个参数可选，分别为liblinear,lbfgs,newton-cg,sag和saga。默认为liblinear，适用于数据量小的数据集，当数据量大的时候可以选用sga或saga方法。
+- `max_iter`：算法收敛的最大迭代次数，默认为10.
 - `n_jobs`：拟合和预测的时候 CPU 的核数，默认是 1
 
-模型评估指标
+## 模型评估指标  
+1. TP：预测为正，判断正确
+2. FP：预测为正，判断错误
+3. TN：预测为负，判断正确
+4. FN：预测为负，判断错误
 
-评估模型的好坏
+- 准确率：
+$$Accuracy=\frac{TP+TN}{TP+TN+FP+FN}$$
+准确率是正确分类的样本个数与总样本个数的比例，但当分类结果严重不平衡的时候，使用准确率很难反映模型的好坏
 
-F1
+- 精确率：(被判断为1的样本中真正为1的比例)
+$$P=\frac{TP}{TP+FP}$$
+- 召回率：(真正为1的样本中被判断为1的比例)
+$$R=\frac{TP}{TP+FN}$$
 
-![](https://static001.geekbang.org/resource/image/b1/ce/b122244eae9a74eded619d14c0bc12ce.png)
+- F1 作为精确率 P 和召回率 R 的调和平均，数值越大代表模型的结果越好（当分类结果严重不平衡的时候，F1更适合用于评估模型的好坏）
+$$F1=2*\frac{P*R}{P+R}$$
 
-F1 作为精确率 P 和召回率 R 的调和平均
 
-数值越大代表模型的结果越好
+## 分析步骤
 
-分析步骤
-
-![](https://static001.geekbang.org/resource/image/92/a5/929c96584cbc25972f63ef39101c96a5.jpg)
-
+交易时间Time（其实只是序号），PCA降维后特征变量V1-28，Class=0正常，Class=1欺诈
+![](step.jpg)
+[代码](credit_fraud_analysis.py)  
+[练习](credit_fraud_svc.py)
 
 总量
 
-![](./WX20190318-113913.png)
+![](./条形图.png)
 
 诈骗交易 && 正常交易
 
-![](WX20190318-114039.png)
+![](分组条形图.png)
 
 ```
 总交易笔数:  284807
@@ -80,11 +90,11 @@ F1 作为精确率 P 和召回率 R 的调和平均
 
  逻辑回归 混淆矩阵
 
-![](WX20190318-114354.png)
+![](混淆矩阵.png)
 
  精准率 召回率
 
-![](WX20190318-114620.png)
+![](精确率-召回率曲线.png)
 
 ## 说明
 
@@ -100,4 +110,4 @@ F1 作为精确率 P 和召回率 R 的调和平均
 
 ## 总结
 
-![](https://static001.geekbang.org/resource/image/ab/50/abee1a58b99814f1e0218778b98a6950.png)
+![](总结.png)
