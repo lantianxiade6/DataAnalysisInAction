@@ -50,7 +50,8 @@ def show_metrics(cm):
   print('F1值: {:.3f}'.format(F1))
 
 # 数据加载
-data = pd.read_csv('./40/creditcard.csv')
+#data = pd.read_csv('./40/creditcard.csv')#由于GitHub限制文件不得大于100M,所以这里直接读取本地csv，GitHub上只保留rar压缩版
+data = pd.read_csv(r'D:\Lisa\学习2\python\creditcard.csv')
 
 # 数据探索
 print(data.describe())
@@ -105,7 +106,7 @@ plot_confusion_matrix(cm, classes=class_names, title='SVC 混淆矩阵')#调用�
 # 显示模型评估分数
 show_metrics(cm)#调用show_metrics函数，显示模型评估分数
 '''
-精确率: 0.846
-召回率: 0.733
-F1值: 0.786
+精确率: 0.837
+召回率: 0.683
+F1值: 0.752
 '''
