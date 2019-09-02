@@ -1,15 +1,15 @@
 # -*- coding:utf-8 -*-
-# 使用逻辑回归对信用卡欺诈进行分类
+# 使用SVC对信用卡欺诈进行分类
 import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import itertools
-from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, precision_recall_curve
 from sklearn.preprocessing import StandardScaler
 import warnings
+from sklearn import svm
 
 warnings.filterwarnings('ignore')
 
@@ -48,19 +48,6 @@ def show_metrics(cm):
   print('精确率: {:.3f}'.format(P))
   print('召回率: {:.3f}'.format(R))
   print('F1值: {:.3f}'.format(F1))
-
-# 绘制精确率-召回率曲线
-def plot_precision_recall(precision, recall):
-  plt.step(recall, precision, color='b', alpha=0.2, where='post')#以recall为横坐标，precision为纵坐标画界线
-  plt.fill_between(recall, precision, step='post', alpha=0.2, color='b')#沿界线填充
-  plt.plot(recall, precision, linewidth=2)#recall为横坐标，precision为纵坐标，用粗为2的线画
-  plt.xlim([0.0, 1])
-  plt.ylim([0.0, 1.05])
-  plt.xlabel('召回率')
-  plt.ylabel('精确率')
-  plt.title('精确率-召回率 曲线')
-  plt.show()
-
 
 # 数据加载
 data = pd.read_csv('./40/creditcard.csv')
@@ -106,25 +93,19 @@ print(X[:6])
 # 准备训练集和测试集
 train_x, test_x, train_y, test_y = train_test_split(X, y, test_size=0.1, random_state=33)
 
-# 逻辑回归分类
-clf = LogisticRegression()
-clf.fit(train_x, train_y)#训练
-predict_y = clf.predict(test_x)#预测（0或1）
-# 预测样本的置信分数
-score_y = clf.decision_function(test_x)#0-1的数值
+# SVC分类(跑得很慢,5min)
+model = svm.LinearSVC()#SVM
+model.fit(train_x, train_y)#训练
+predict_y = model.predict(test_x)#预测（0或1）
 # 计算混淆矩阵，并显示
 cm = confusion_matrix(test_y, predict_y)#得到一个矩阵
 class_names = [0, 1]
 # 显示混淆矩阵
-plot_confusion_matrix(cm, classes=class_names, title='逻辑回归 混淆矩阵')#调用函数plot_confusion_matrix，画混淆矩阵图
+plot_confusion_matrix(cm, classes=class_names, title='SVC 混淆矩阵')#调用函数plot_confusion_matrix，画混淆矩阵图
 # 显示模型评估分数
 show_metrics(cm)#调用show_metrics函数，显示模型评估分数
 '''
-精确率: 0.841
-召回率: 0.617
-F1值: 0.712
+精确率: 0.846
+召回率: 0.733
+F1值: 0.786
 '''
-# 计算精确确率，召回率，阈值用于可视化
-precision, recall, thresholds = precision_recall_curve(test_y, score_y)#precision_recall_curve可以计算在不同概率阈值情况下的精确率和召回率
-plot_precision_recall(precision, recall)
-#可以看到，最佳点的确是在精确率在0.8，召回率在0.6附近。

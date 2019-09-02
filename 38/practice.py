@@ -1,15 +1,10 @@
 import matplotlib
 matplotlib.use('Qt4Agg')
 import requests
-# import sys
-# import re
-# import os
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import jieba
 from PIL import Image
-# import numpy as np
-# from lxml import etree
 
 #对歌单做词云
 #https://music.163.com/#/playlist?id=753776811
