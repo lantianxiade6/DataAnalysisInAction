@@ -1,7 +1,7 @@
 ---
 第一点: 进一步了解 CNN 网络
 第二点: 初步了解 LeNet 和 AlexNet
-第三点: 对常用的深度学习框架进行对比
+第三点: 对常用的深度学习框架进行对比（包括Tensorflow、keras、Caffe、PyTorch、MXnet和Theano)
 第四点: 使用 Keras 这个深度学习框架编写代码
 ---
 
@@ -10,27 +10,27 @@
 ## 理解卷积的作用
 ### CNN 网络结构
 
-* 卷积层
+* 卷积层: 把图像分块，对每一块的图像进行卷积操作
 * 池化层
 * 全连接层
 
 ### 什么是卷积？
 
-假设有下面的一张图
+假设有一张二维图像X，和卷积K，二维矩阵X进行卷积K操作之后，得到矩阵Z
 
-![](https://static001.geekbang.org/resource/image/9d/cf/9d1bb65b30517775b632c10c1cb1c0cf.jpg)
+![](卷积操作.jpg)
 
 1. 翻转矩阵180度
-
+![](旋转180后的k.jpg)
 > 至于为什么，客官请看社区的这篇文章: [链接1][]
 
 2. 卷积运算
 
-![](https://static001.geekbang.org/resource/image/90/11/90a3bbabba732a2a7ad97a24f3587411.jpg)
-
+![](卷积运算.jpg)
+![](出来会是一个3x3矩阵.png)
 3. 重复第二步骤 得到结果
 
-![](https://static001.geekbang.org/resource/image/b8/6c/b824778383e3a898fe2399fb2eb8846c.jpg)
+![](结果.jpg)
 
 使用代码进行总结
 

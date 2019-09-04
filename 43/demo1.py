@@ -9,7 +9,7 @@ import numpy as np
 from scipy import signal
 
 # 读取灰度图像
-img = cv2.imread("haibao.jpeg", 0)
+img = cv2.imread("./43/haibao.jpeg", 0)
 # 显示灰度图像
 plt.imshow(img, cmap="gray")
 pylab.show()
