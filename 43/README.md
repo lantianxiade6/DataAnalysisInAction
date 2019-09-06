@@ -27,7 +27,7 @@
 2. 卷积运算
 
 ![](卷积运算.jpg)
-![](出来会是一个3x3矩阵.png)
+![](出来会是一个3x3矩阵.png)  
 3. 重复第二步骤 得到结果
 
 ![](结果.jpg)
@@ -50,7 +50,7 @@
 
 卷积层可以有多个卷积核，例如LeNet,它的第一层含有6个，可以提取图像的6个特征，从而得到6个特征图（feature maps)
 
-## 特征函数的作用
+## 激活函数的作用
 
 卷积操作的下一步，需要用激活函数做进一步处理。 `Sigmoid`、`tanh`、`ReLU` 都是常用的激活函数。这些激活函数通常都是非线性的函数，使用它们的目的是把线性数值映射到非线性空间中。  
 
@@ -83,10 +83,10 @@ CNN网络结构：
 
 ## `LeNet` 和 `AlexNet` 网络
 
-通常我们可以使用多个卷积层和池化层，最后再连接一个或者多个全连接层...
-LeNet 提出于 1986 年，是最早用于数字识别的 CNN网络...
+通常我们可以使用多个卷积层和池化层，最后再连接一个或者多个全连接层  
+LeNet 提出于 1986 年，是最早用于数字识别的 CNN网络
 
-AlexNet 在 LeNet 的基础上做了改进，提出了更深的CNN网络...
+AlexNet 在 LeNet 的基础上做了改进，提出了更深的CNN网络
 
 后面提出的深度模型，比如VGG、GoogleNet和ResNet
 
@@ -101,7 +101,7 @@ AlexNet|227\*227\*3|5|3|3|1000
 ![](框架对比.png)
 
 ## 用 `Keras` 做 `Mnist` 手写数字识别
-使用 `Keras` 之前，我们需要安装相应的工具包-till here
+使用 `Keras` 之前，我们需要安装相应的工具包
 ```
 pip install keras
 pip install tensorflow
@@ -127,17 +127,21 @@ model = Sequential()
 
 ### 对 `2D` 信号做最大池化层
 
-使用`MaxPooling2D(pool_size=(2, 2))`进行创建，其中`pool_size` 代表下采样因子，比如pool_size=(2,2)相当于将原来2*2的矩阵变成1个点，即用2\*2矩阵中的最大值代替，输出的图像在长度和宽度上均为原图的一半。
+使用`MaxPooling2D(pool_size=(2, 2))`进行创建，其中`pool_size` 代表下采样因子，比如`pool_size=(2,2)`相当于将原来2*2的矩阵变成1个点，即用2\*2矩阵中的最大值代替，输出的图像在长度和宽度上均为原图的一半。
 
 ### 创建 Flatten 层
 
-使用 `Flatten()` 创建
+使用 `Flatten()` 创建，常用于将多维的输入扁平化，也就是展开为一维的向量。一般用在卷积层和全连接层之间，方便后面进行全连接层的操作。
 
 ### 创建全连接层
 
-使用 Dense(units, activation=Non...
+使用 `Dense(units, activation=None)`进行创建，其中units代表的是输出的空间维度，activation代表的是激活函数。  
 
-model.compile(loss, optimizer=‘adam’, metrics=[‘accuracy’]) 来完成损失函数和优化器的
+当我们把层建立好之后，可以加入到**序贯模型**中，使用`model.add()`函数即可。
+
+添加好网络模型中的层之后，我们可以使用`model.compile(loss,optimizer='adam', metrics=['accuracy'])` 来完成损失函数和优化器的配置，其中loss代表损失函数的配置，optimizer代表优化器，metrics代表评估模型所采用的指标。
+
+然后我们可以使用fit函数进行训练，使用predict函数进行预测，使用evaluate函数对模型评估
 
 ### 示例代码
 
@@ -145,6 +149,6 @@ model.compile(loss, optimizer=‘adam’, metrics=[‘accuracy’]) 来完成损
 
 ## 总结
 
-![](https://static001.geekbang.org/resource/image/43/39/431ccdf001d421b3810e03c9c598b539.png)
+![](总结.png)
 
 [链接1]: https://cloud.tencent.com/developer/article/1366358 "什么！卷积要旋转180度？！"
