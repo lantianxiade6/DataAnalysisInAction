@@ -50,4 +50,5 @@
 
   `mean` `se` `worst` 代表不同的度量方式
 
+  [SVC代码](./breastCancerData/breast_linearsvm.py)
   [SVM代码](./breastCancerData/breast_svm.py)
