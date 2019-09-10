@@ -38,5 +38,5 @@
 
 
 ## 代码
- [demo](./demo.py)
+ [demo](./demo.py)  
  [knn](./knn.py)
